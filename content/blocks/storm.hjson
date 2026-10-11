@@ -1,0 +1,121 @@
+Type: ItemTurret
+name: storm
+localizedName: Шторм
+description: Продвинутая турель среднего радиуса действия. Эффективно уничтожает врагов с помощью взрывных снарядов, пиротита и кремния из трёх стволов. Требует энергию и поддерживает ускорение жидкостями.
+details: ""
+health: 1350
+size: 3
+reload: 5
+range: 260
+shootCone: 15
+rotateSpeed: 10
+inaccuracy: 5
+recoil: 3
+shake: 1.5
+targetAir: true
+targetGround: true
+category: turret
+research: swarmer
+
+# Конфигурация трёх стволов с правильным расстоянием между ними
+shoot: {
+  type: ShootAlternate
+  barrels: 3
+  spread: 8.5
+}
+
+# Стоимость строительства
+requirements: [
+  copper/300
+  lead/200
+  silicon/150
+  plastanium/100
+]
+
+# Потребление энергии и стандартное охлаждение/ускорение
+consumes: {
+  power: 3.0
+  coolant: {
+    amount: 0.3
+  }
+}
+
+# Типы боеприпасов с зелёным свечением снарядов и самонаведением
+ammoTypes: {
+  # Взрывчатая смесь (Blast Compound)
+  blast-compound: {
+    type: BasicBulletType
+    damage: 80
+    speed: 5
+    lifetime: 52
+    width: 11
+    height: 14
+    ammoMultiplier: 3
+    frontColor: "b9ff66"
+    backColor: "76ff03"
+    hitEffect: blastExplosion
+    despawnEffect: blastExplosion
+    status: blasted
+    statusDuration: 60
+    splashDamage: 45
+    splashDamageRadius: 28
+    homingPower: 0.15
+    homingRange: 160
+  }
+  
+  # Пиротит (Pyratite)
+  pyratite: {
+    type: BasicBulletType
+    damage: 60
+    speed: 5
+    lifetime: 52
+    width: 10
+    height: 13
+    ammoMultiplier: 5
+    frontColor: "b9ff66"
+    backColor: "76ff03"
+    hitEffect: fireHit
+    despawnEffect: fireSmoke
+    status: burning
+    statusDuration: 300
+    makeFire: true
+    splashDamage: 30
+    splashDamageRadius: 20
+    homingPower: 0.15
+    homingRange: 160
+  }
+
+  # Кремний (Silicon)
+  silicon: {
+    type: BasicBulletType
+    damage: 50
+    speed: 7
+    lifetime: 40
+    width: 8
+    height: 11
+    ammoMultiplier: 4
+    frontColor: "b9ff66"
+    backColor: "76ff03"
+    homingPower: 0.15
+    homingRange: 160
+    hitEffect: hitBulletColor
+    despawnEffect: none
+  }
+
+  # Кинетический сплав (Surge Alloy)
+  surge-alloy: {
+    type: BasicBulletType
+    damage: 100
+    speed: 6.5
+    lifetime: 40
+    width: 11
+    height: 14
+    ammoMultiplier: 10
+    frontColor: "b9ff66"
+    backColor: "76ff03"
+    homingPower: 0.15
+    homingRange: 160
+    hitEffect: hitBulletColor
+    despawnEffect: none
+  }
+}
