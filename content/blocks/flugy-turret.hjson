@@ -1,0 +1,83 @@
+{
+  name: "flugy-turret"
+  localizedName: "Пневматическая турель"
+  description: "Мощная пневматическая пушка с поддержкой четырёх видов боеприпасов."
+
+  type: ItemTurret
+  health: 500
+  size: 2
+  range: 140
+  reload: 20
+  inaccuracy: 2
+  rotateSpeed: 5
+  shootSound: pew
+
+  ammoTypes: {
+    copper: {
+      type: BasicBulletType
+      damage: 20
+      speed: 4
+      lifetime: 40
+      width: 9
+      height: 15
+      frontColor: "b9ff66"
+      backColor: "76ff03"
+    }
+    graphite: {
+      type: BasicBulletType
+      damage: 25
+      ammoMultiplier: 3
+      reloadMultiplier: 1.25
+      speed: 4.5
+      lifetime: 35
+      width: 10
+      height: 18
+      frontColor: "b9ff66"
+      backColor: "76ff03"
+    }
+    silicon: {
+      type: BasicBulletType
+      damage: 30
+      ammoMultiplier: 3
+      homingPower: 1.5
+      homingRange: 80
+      speed: 5
+      lifetime: 32
+      width: 8
+      height: 15
+      frontColor: "b9ff66"
+      backColor: "76ff03"
+    }
+    pyratite: {
+      type: BasicBulletType
+      damage: 35
+      ammoMultiplier: 5
+      speed: 4.5
+      lifetime: 35
+      width: 10
+      height: 17
+      frontColor: "b9ff66"
+      backColor: "76ff03"
+      status: burning
+      statusDuration: 180
+      makeFire: true
+    }
+  }
+
+  requirements: [
+    copper/100
+    graphite/50
+    silicon/50
+  ]
+
+  research: {
+    parent: hail
+    requirements: [
+      copper/150
+      graphite/100
+      silicon/100
+    ]
+  }
+
+  category: turret
+}
